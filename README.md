@@ -1,4 +1,5 @@
 # deno-csrf
+
 Provides Deno with the CSRF protection of rust-csrf.
 
 # Usage
@@ -21,7 +22,12 @@ const pair = computeTokenPair("01234567012345670123456701234567",123)
 //   cookieStr: "NGHpiZ1ee+B~~~~cq8613dHD9jS..."
 // }
 
-const result = computeVerifyTokenPair("01234567012345670123456701234567", pair.tokenStr, pair.cookieStr)
+const result = computeVerifyTokenPair(
+  "01234567012345670123456701234567",
+  pair.tokenStr as string,
+  pair.cookieStr as string
+);
+
 console.log(result)
 // => true
 
