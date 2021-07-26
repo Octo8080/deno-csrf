@@ -252,6 +252,6 @@ var str = ary[ary.length - 1];
 var rep = url.replace(str, '');
 
 //const wasmFile = file.substring(0, file.lastIndexOf(Deno.build.os === 'windows' ? '\\' : '/') + 1) + 'csrf_wasm_bg.wasm';
-const wasmModule = new WebAssembly.Module(`${rep}/'csrf_wasm_bg.wasm`);
+const wasmModule = new WebAssembly.Module(await fetch(`${rep}/'csrf_wasm_bg.wasm`));
 const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
 const wasm = wasmInstance.exports;
