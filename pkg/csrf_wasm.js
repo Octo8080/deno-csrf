@@ -243,7 +243,9 @@ const imports = {
 };
 
 const file = import.meta;
+console.log("///")
 console.log(file)
+console.log("///")
 const wasmFile = file.substring(0, file.lastIndexOf(Deno.build.os === 'windows' ? '\\' : '/') + 1) + 'csrf_wasm_bg.wasm';
 const wasmModule = new WebAssembly.Module(Deno.readFileSync(wasmFile));
 const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
