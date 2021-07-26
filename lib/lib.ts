@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.65.0/testing/asserts.ts";
-import { generateTokenPair, verifyTokenPair } from "../pkg/csrf_wasm.js?A=4";
+import { generateTokenPair, verifyTokenPair } from "../pkg/csrf_wasm.js";
 
 let _key = "01234567012345670123456701234567";
 
