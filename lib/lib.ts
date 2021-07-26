@@ -23,7 +23,7 @@ Deno.test("Failed token verification not pair.", () => {
   assertEquals(verifyTokenPair(_key, token_str, no_pair_cookie_str), false);
 });
 
-interface CsrfResult {
+export interface CsrfResult {
   isSucccess: boolean;
   tokenStr: String;
   cookieStr: String;
@@ -59,8 +59,8 @@ const computeVerifyTokenPair = (
   try {
     return verifyTokenPair(key, tokenStr, cookieStr);
   } catch (error) {
-    return false
+    return false;
   }
 };
 
-export { computeTokenPair, computeVerifyTokenPair, CsrfResult };
+export { computeTokenPair, computeVerifyTokenPair };
