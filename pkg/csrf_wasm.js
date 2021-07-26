@@ -250,7 +250,7 @@ console.log("///AAA")
 var ary = url.split('/');
 var str = ary[ary.length - 1];
 var rep = url.replace(str, '');
-console.log(`${rep}/'csrf_wasm_bg.wasm`)
+console.log(`${rep}csrf_wasm_bg.wasm`)
 
 //const wasmFile = file.substring(0, file.lastIndexOf(Deno.build.os === 'windows' ? '\\' : '/') + 1) + 'csrf_wasm_bg.wasm';
 
