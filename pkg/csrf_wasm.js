@@ -243,9 +243,9 @@ const imports = {
 };
 
 const url = import.meta.url;
-console.log("///")
+console.log("///AAA")
 console.log(url)
-console.log("///")
+console.log("///AAA")
 
 var ary = url.split('/');
 var str = ary[ary.length - 1];
