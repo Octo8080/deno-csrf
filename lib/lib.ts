@@ -25,8 +25,8 @@ Deno.test("Failed token verification not pair.", () => {
 
 export interface CsrfResult {
   isSucccess: boolean;
-  tokenStr: String;
-  cookieStr: String;
+  tokenStr: string;
+  cookieStr: string;
 }
 
 const resultBuilder = (
