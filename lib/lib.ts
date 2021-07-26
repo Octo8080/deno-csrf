@@ -43,12 +43,12 @@ const resultBuilder = (
 };
 
 const computeTokenPair = (key: string, ttlSeconds: number) => {
-  try {
+  //try {
     let { token_str, cookie_str } = generateTokenPair(_key, ttlSeconds);
     return resultBuilder(true, token_str, cookie_str);
-  } catch (error) {
-    return resultBuilder(false);
-  }
+  //} catch (error) {
+  //  return resultBuilder(false);
+  //}
 };
 
 const computeVerifyTokenPair = (
@@ -56,11 +56,11 @@ const computeVerifyTokenPair = (
   tokenStr: string,
   cookieStr: string
 ) => {
-  try {
+  //try {
     return verifyTokenPair(key, tokenStr, cookieStr);
-  } catch (error) {
-    return false;
-  }
+  //} catch (error) {
+  //  return false;
+  //}
 };
 
 export { computeTokenPair, computeVerifyTokenPair };
