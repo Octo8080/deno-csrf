@@ -1,0 +1,20 @@
+[package]
+name = "csrf-wasm"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+wasm-bindgen = { version = "0.2.74", features = ["serde-serialize"]}
+csrf = "0.4.0"
+data-encoding = "2.2.0"
+console_error_panic_hook = "0.1.6"
+
+# csrf が参照している rand をwasm-bindgen を参照して使う
+rand = { version = "0.7.3", features = ["wasm-bindgen"] }
+
+# csrf が参照している chrono をJavascript 向けのビルドをするための記述が必要
+chrono = {version = "0.4.19", default-features = false, features = ["wasmbind"]}
+serde = { version = "1.0", features = ["derive"] }
+
+[lib]
+crate-type = ["cdylib", "rlib"]

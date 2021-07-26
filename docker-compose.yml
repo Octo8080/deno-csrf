@@ -1,0 +1,19 @@
+version: "3"
+services:
+  rust-app:
+    build:
+      context: .
+      dockerfile: RustDockerfile
+    volumes:
+      - .:/app:cached
+    tty: true
+  deno-app:
+    build:
+      context: .
+      dockerfile: DenoDockerfile
+    privileged: true
+    entrypoint:
+      - /sbin/init
+    volumes:
+      - .:/usr/src/app:cached
+    tty: true
