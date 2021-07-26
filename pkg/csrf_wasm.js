@@ -242,12 +242,12 @@ const imports = {
 
 };
 
-const file = import.meta.url;
+const url = import.meta.url;
 console.log("///")
-console.log(file)
+console.log(url)
 console.log("///")
 
-var ary = file.split('/');
+var ary = url.split('/');
 var str = ary[ary.length - 1];
 var rep = url.replace(str, '');
 
