@@ -40,6 +40,7 @@ fn protect_instance(aead_key: String) -> AesGcmCsrfProtection{
 
 // トークンペア(トークン＋cookie)を返す
 #[wasm_bindgen (js_name = generateTokenPair)]
+#[no_mangle]
 pub fn generate_token_pair(aead_key: String, ttl_seconds: i32) -> JsValue {
     console_error_panic_hook::set_once();
     let protect = protect_instance(aead_key);
@@ -50,6 +51,7 @@ pub fn generate_token_pair(aead_key: String, ttl_seconds: i32) -> JsValue {
 
 // トークンペア(トークン＋cookie)を検証する
 #[wasm_bindgen (js_name = verifyTokenPair)]
+#[no_mangle]
 pub fn verify_token_pair(aead_key: String, token_str: String, cookie_str: String) -> bool {
     console_error_panic_hook::set_once();
     let protect = protect_instance(aead_key);
