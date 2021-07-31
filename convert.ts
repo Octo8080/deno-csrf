@@ -36,24 +36,30 @@ if (!existsSync(targetJsFilePath)) {
   Deno.exit();
 }
 
-// wasmの文字列化処理、jsコード埋め込み
 const file = Deno.readFileSync(targetWasmFilePath);
 const jsCode = Deno.readTextFileSync(targetJsFilePath);
 
+// Deno 向けローカル保存されたwasmを使うコードを削除
 const noImportJsCode = jsCode
   .split("\n")
-  .filter((row) => !row.match(/^import/))
+  .filter((row) => !row.match(/^const file/))
+  .filter((row) => !row.match(/^const wasmFile/))
+  .filter((row) => !row.match(/^const wasmModule/))
+  .filter((row) => !row.match(/^const wasmInstance /))
+  .filter((row) => !row.match(/^const wasm /))
   .join("\n");
 
+// wasmの文字列化処理、jsコード埋め込み
 let str = `
+${noImportJsCode}
+
 const wasmCode = new Uint8Array([
   ${[].slice.call(file)}
 ]);
 const wasmModule = new WebAssembly.Module(wasmCode);
-const wasmInstance = new WebAssembly.Instance(wasmModule);
+const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
 const wasm = wasmInstance.exports
 
-${noImportJsCode}
 `;
 
 console.log(str);
