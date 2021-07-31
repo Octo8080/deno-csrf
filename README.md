@@ -4,16 +4,10 @@ Provides Deno with the CSRF protection of rust-csrf.
 
 # Usage
 
-Please clone the repository.
-
-```sh
-$ git clone git@github.com:Octo8080/deno-csrf.git
-```
-
 The sample code for execution is as follows.
 
 ```js
-import {computeTokenPair, computeVerifyTokenPair} from "./deno-csrf/mod.ts"
+import {computeTokenPair, computeVerifyTokenPair} from "https://raw.githubusercontent.com/Octo8080/deno-csrf/main/mod.ts"
 
 const pair = computeTokenPair("01234567012345670123456701234567",123)
 // {
