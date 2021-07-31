@@ -14,6 +14,7 @@ struct TokenPair {
 }
 
 // JavaScript のオブジェクト形式で返り値を作成する
+#[no_mangle]
 fn js_token_pair_builder(values: &[&str]) -> JsValue {
     let myobj = TokenPair {
         token_str: values[0].to_string(),
@@ -23,6 +24,7 @@ fn js_token_pair_builder(values: &[&str]) -> JsValue {
 }
 
 // &[u8] を[u8; 32] に力技で変換
+#[no_mangle]
 fn convert_u8_u832(src: &[u8] ) -> [u8; 32] {
   let mut res = [0; 32];
   for i in 0..31 {
