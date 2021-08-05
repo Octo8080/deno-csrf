@@ -2,12 +2,12 @@
 
 Provides Deno with the CSRF protection of rust-csrf.
 
-# Usage
+## Usage
 
 The sample code for execution is as follows.
 
 ```js
-import {computeTokenPair, computeVerifyTokenPair} from "https://raw.githubusercontent.com/Octo8080/deno-csrf/main/mod.ts"
+import { computeTokenPair, computeVerifyTokenPair } from "https://deno.land/x/deno_csrf@0.0.1/mod.ts"
 
 const pair = computeTokenPair("01234567012345670123456701234567",123)
 // {
@@ -26,3 +26,8 @@ console.log(result)
 // => true
 
 ```
+
+
+## Used tools
+
+Using [js_with_embedded_wasm](https://deno.land/x/js_with_embedded_wasm) to convert the js created for deno by wasm and wasm-bindgen in deno to js with wasm embedded.
