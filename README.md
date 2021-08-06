@@ -7,7 +7,7 @@ Provides Deno with the CSRF protection of rust-csrf.
 The sample code for execution is as follows.
 
 ```js
-import { computeAesGcmTokenPair, computeVerifyAesGcmTokenPair, computeHmacTokenPair, computeVerifyHmacTokenPair } from "https://deno.land/x/deno_csrf@0.0.1/mod.ts"
+import { computeAesGcmTokenPair, computeVerifyAesGcmTokenPair, computeHmacTokenPair, computeVerifyHmacTokenPair } from "https://deno.land/x/deno_csrf@0.0.4/mod.ts"
 
 // AES-GCM
 //
