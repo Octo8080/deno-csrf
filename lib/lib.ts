@@ -52,6 +52,8 @@ const computeVerifyAesGcmTokenPair = (
   tokenStr: string,
   cookieStr: string
 ) => {
+  if (!keyLimit(key)) return false;
+
   try {
     return verifyAesGcmTokenPair(key, tokenStr, cookieStr);
   } catch (error) {
@@ -75,6 +77,8 @@ const computeVerifyHmacTokenPair = (
   tokenStr: string,
   cookieStr: string
 ) => {
+  if (!keyLimit(key)) return false;
+
   try {
     return verifyHmacTokenPair(key, tokenStr, cookieStr);
   } catch (error) {

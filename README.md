@@ -11,33 +11,33 @@ import { computeAesGcmTokenPair, computeVerifyAesGcmTokenPair, computeHmacTokenP
 
 // AES-GCM
 //
-const pair = computeAesGcmTokenPair("01234567012345670123456701234567",123)
+const pair1 = computeAesGcmTokenPair("01234567012345670123456701234567",123)
 // {
 //   isSucccess: true,
 //   tokenStr: "i3Gi0Gy1orrz~~~~8jZM7NCvkns...",
 //   cookieStr: "NGHpiZ1ee+B~~~~cq8613dHD9jS..."
 // }
 
-const result = computeVerifyAesGcmTokenPair(
+const result1 = computeVerifyAesGcmTokenPair(
   "01234567012345670123456701234567",
-  pair.tokenStr as string,
-  pair.cookieStr as string
+  pair1.tokenStr as string,
+  pair1.cookieStr as string
 );
 
-console.log(result)
+console.log(result1)
 // => true
 
 // HMAC
 //
-const pair = computeHmacTokenPair("01234567012345670123456701234567",123)
+const pair2 = computeHmacTokenPair("01234567012345670123456701234567",123)
 
-const result = computeVerifyHmacTokenPair(
+const result2 = computeVerifyHmacTokenPair(
   "01234567012345670123456701234567",
-  pair.tokenStr as string,
-  pair.cookieStr as string
+  pair2.tokenStr as string,
+  pair2.cookieStr as string
 );
 
-console.log(result)
+console.log(result2)
 // => true
 
 ```

@@ -67,7 +67,6 @@ pub fn generate_hmac_token_pair(aead_key: String, ttl_seconds: i32) -> JsValue {
 
     let (token, cookie) = protect.generate_token_pair(None, ttl_seconds as i64).expect("couldn't generate token/cookie pair");
     return js_token_pair_builder(&[&token.b64_string(), &cookie.b64_string()])
-    //return js_token_pair_builder(&[&token.b64_string(), &cookie.b64_string()])
 }
 
 // AES-GCMでトークンペア(トークン＋cookie)を検証する
