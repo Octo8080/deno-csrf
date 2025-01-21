@@ -11,31 +11,31 @@ export interface CsrfResult {
   cookieStr: string;
 }
 
-const resultBuilder = (
+function resultBuilder(
   isSuccess: boolean = false,
   tokenStr: string | undefined = undefined,
   cookieStr: string | undefined = undefined,
-): CsrfResult => {
+): CsrfResult {
   let result = {
     isSuccess,
     tokenStr: tokenStr || "",
     cookieStr: cookieStr || "",
   };
   return result;
-};
+}
 
-const isNumberStr = (s: string) => {
+function isNumberStr(s: string): boolean {
   const regex = new RegExp("[0-9]");
   return regex.test(s);
-};
+}
 
-const keyLimit = (key: string): boolean => {
+function keyLimit(key: string): boolean {
   if (key.length != 32) return false;
   if (!isNumberStr(key)) return false;
   return true;
-};
+}
 
-const computeAesGcmTokenPair = (key: string, ttlSeconds: number) => {
+function computeAesGcmTokenPair(key: string, ttlSeconds: number): CsrfResult {
   if (!keyLimit(key)) return resultBuilder(false);
 
   try {
@@ -44,13 +44,13 @@ const computeAesGcmTokenPair = (key: string, ttlSeconds: number) => {
   } catch (error) {
     return resultBuilder(false);
   }
-};
+}
 
-const computeVerifyAesGcmTokenPair = (
+function computeVerifyAesGcmTokenPair(
   key: string,
   tokenStr: string,
   cookieStr: string,
-) => {
+): boolean {
   if (!keyLimit(key)) return false;
 
   try {
@@ -58,9 +58,9 @@ const computeVerifyAesGcmTokenPair = (
   } catch (error) {
     return false;
   }
-};
+}
 
-const computeHmacTokenPair = (key: string, ttlSeconds: number) => {
+function computeHmacTokenPair(key: string, ttlSeconds: number): CsrfResult {
   if (!keyLimit(key)) return resultBuilder(false);
 
   try {
@@ -69,13 +69,13 @@ const computeHmacTokenPair = (key: string, ttlSeconds: number) => {
   } catch (error) {
     return resultBuilder(false);
   }
-};
+}
 
-const computeVerifyHmacTokenPair = (
+function computeVerifyHmacTokenPair(
   key: string,
   tokenStr: string,
   cookieStr: string,
-) => {
+): boolean {
   if (!keyLimit(key)) return false;
 
   try {
@@ -83,7 +83,7 @@ const computeVerifyHmacTokenPair = (
   } catch (error) {
     return false;
   }
-};
+}
 
 export {
   computeAesGcmTokenPair,
