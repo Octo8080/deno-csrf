@@ -3,7 +3,7 @@ import {
   generateHmacTokenPair,
   verifyAesGcmTokenPair,
   verifyHmacTokenPair,
-} from "../wasm/pkg/csrf_wasm.js";
+} from "../pkg/csrf_wasm.js";
 
 export interface CsrfResult {
   isSuccess: boolean;
