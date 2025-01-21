@@ -1,10 +1,10 @@
 // rust-csrf を deno より使うためのWASM実装
-
 use wasm_bindgen::prelude::*;
 use csrf::{AesGcmCsrfProtection, HmacCsrfProtection, CsrfProtection};
 use data_encoding::BASE64;
 extern crate console_error_panic_hook;
 use serde::{Serialize};
+use gloo_utils::format::JsValueSerdeExt;
 
 // JavaScript のオブジェクト定義
 #[derive(Serialize)]
@@ -82,7 +82,7 @@ pub fn verify_aes_gcm_token_pair(aead_key: String, token_str: String, cookie_str
     let parsed_token = protect.parse_token(&token_bytes).expect("token not parsed");
     let parsed_cookie = protect.parse_cookie(&cookie_bytes).expect("cookie not parsed");
 
-    protect.verify_token_pair(&parsed_token, &parsed_cookie)
+    protect.verify_token_pair(&parsed_token, &parsed_cookie).is_ok()
 }
 
 // HMACでトークンペア(トークン＋cookie)を検証する
@@ -98,5 +98,5 @@ pub fn verify_hmac_token_pair(aead_key: String, token_str: String, cookie_str: S
     let parsed_token = protect.parse_token(&token_bytes).expect("token not parsed");
     let parsed_cookie = protect.parse_cookie(&cookie_bytes).expect("cookie not parsed");
 
-    protect.verify_token_pair(&parsed_token, &parsed_cookie)
+    protect.verify_token_pair(&parsed_token, &parsed_cookie).is_ok()
 }
