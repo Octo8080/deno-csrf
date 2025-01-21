@@ -7,3 +7,12 @@
 
 #/target
 Cargo.lock
+tmp
+
+# wasm
+wasm/target
+wasm/**/*.rs.bk
+wasm/Cargo.lock
+wasm/bin/
+wasm/pkg/
+wasm/wasm-pack.log

@@ -1,0 +1,42 @@
+[package]
+name = "csrf-wasm"
+version = "0.1.0"
+authors = ["app"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+wasm-bindgen = "0.2.100"
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.7", optional = true }
+csrf = "0.4.2"
+data-encoding = "2.7.0"
+
+# csrf が参照している rand をwasm-bindgen を参照して使う
+rand = { version = "0.7.3", features = ["wasm-bindgen"] }
+
+# csrf が参照している chrono をJavascript 向けのビルドをするための記述が必要
+chrono = {version = "0.4.39", default-features = false, features = ["wasmbind"]}
+serde = { version = "1.0.217", features = ["derive"] }
+
+# wasm-bindgen が参照している getrandom をJavascript 向けのビルドをするための記述が必要
+# https://docs.rs/getrandom/latest/getrandom/#webassembly-support
+getrandom = { version = "0.2.15", features = ["js"] }
+
+gloo-utils = "0.2.0"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.50"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"

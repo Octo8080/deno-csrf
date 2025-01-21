@@ -1,0 +1,14 @@
+{
+  "name": "@octo/wasm-csrf",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./mod.ts",
+  "tasks": {
+    "docker:up": "docker compose up -d",
+    "docker:stop": "docker compose stop",
+    "wasm:build": "docker compose run rust-app ./wasm-compile.sh"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}
